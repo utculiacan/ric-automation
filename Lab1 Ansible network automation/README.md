@@ -1,10 +1,16 @@
-Go to "Lab 1 Ansible network automation" on Greenboard
-Follow the video tutorial, you'll need the following information:
+This code corresponds to "Lab 1 Ansible network automation" on Greenboard
 
-Cisco sandbox 1 
-DevNet Sandbox - Workspace - Lab Catalog - IOS XE on CSR Latest Code AlwaysOn1 (cisco.com)
-https://devnetsandbox.cisco.com/RM/Diagram/Index/7b4d4209-a17c-4bc3-9b38-f15184e53a94?diagramType=Topology
+Follow the [tutorial](https://drive.google.com/file/d/1ql1Q_V2kghqbTM1m8qTLfITbBaD8xJEb/view?usp=drivesdk) and upload here an screenshot of the changes made to the cisco router.
 
-Cisco sandbox 2
-DevNet Sandbox - Workspace - Lab Catalog - IOS XE on CSR Recommended Code AlwaysOn (cisco.com)
-https://devnetsandbox.cisco.com/RM/Diagram/Index/27d9747a-db48-4565-8d44-df318fce37ad?diagramType=Topology
+You need to look for a public IOS router at the Cisco DevNet platform, look for one of the "AlwaysOn" options and get their credentials.
+https://devnetsandbox.cisco.com/DevNet 
+![DevNet](https://github.com/user-attachments/assets/c39974c9-8f73-4897-8e37-b46d48df5dc7)
+
+After setting up your ansible installation you should be able to ping the IOS routers.
+![ping](https://github.com/user-attachments/assets/7229ffdb-b561-4630-a44e-afd952edd50d)
+
+Use the provided [devnet.yml](/Lab1%20Ansible%20network%20automation/devnet.yml) file to change the chage the login banner of the IOS routers, you should get a response similar to the following. Note, you may need to update the ios_banner module to use the [latest version](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_banner_module.html):
+![playbook execution](https://github.com/user-attachments/assets/36e04fa0-7915-4047-b75e-f7468e2d6bcd)
+
+Verify your changes by trying to log in via SSH to the routers.
+![Login banner](https://github.com/user-attachments/assets/71558288-9a4c-4afe-866f-fc039cec6944)
