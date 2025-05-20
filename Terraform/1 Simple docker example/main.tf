@@ -1,8 +1,9 @@
 terraform {
   required_providers {
     docker = {
+      #Change latest version: https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs
       source = "kreuzwerker/docker"
-      version = "~> 2.13.0"
+      version = "~> 3.5.0"
     }
   }
 }

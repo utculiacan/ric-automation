@@ -1,2 +1,2 @@
-# ric9-automation
-Resources for Automation of digital infrastructure class
+# ric-automation
+Resources for automation of digital infrastructure and server managament classes
