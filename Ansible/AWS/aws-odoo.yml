@@ -1,0 +1,17 @@
+---
+- name: Install and configure Odoo 18 with HTTPS
+  hosts: odoo
+  become: true
+  vars:
+    domain_name: ti5.lindavdesign.com
+    odoo_repo_url: "https://nightly.odoo.com/18.0/nightly/deb/"
+
+  tasks:
+    - name: Ensure apt cache is updated
+      apt:
+        update_cache: yes
+
+    - name: Install PostgreSQL server
+      apt:
+        name: postgresql
+        state: present
