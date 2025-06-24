@@ -1,0 +1,41 @@
+---
+- name: Install and configure Odoo 18 with HTTPS
+  hosts: gcp
+  become: true
+  vars:
+    domain_name: ti5.lindavdesign.com
+    odoo_repo_url: "https://nightly.odoo.com/18.0/nightly/deb/"
+
+  tasks:
+    - name: Ensure apt cache is updated
+      apt:
+        update_cache: yes
+
+    - name: Install PostgreSQL server
+      apt:
+        name: postgresql
+        state: present
+
+    - name: Add Odoo GPG key
+      ansible.builtin.apt_key:
+        url: https://nightly.odoo.com/odoo.key
+        keyring: /usr/share/keyrings/odoo-archive-keyring.gpg
+        state: present
+
+    - name: Add Odoo repository
+      apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/odoo-archive-keyring.gpg] {{ odoo_repo_url }} ./"
+        filename: odoo
+        state: present
+
+    - name: Install Odoo
+      apt:
+        name: odoo
+        state: present
+        update_cache: yes
+
+    - name: Enable and start Odoo service
+      systemd:
+        name: odoo
+        enabled: yes
+        state: started
